@@ -1,4 +1,4 @@
-import helmet from 'helmet';
+import * as helmet from 'helmet';
 
 const promisifyMiddleware = function(middleware: any) {
   return function(req, res) {
@@ -14,7 +14,7 @@ const promisifyMiddleware = function(middleware: any) {
   };
 };
 
-export const koaHelmet = (): Function => {
+export const koaHelmet = () => {
   const helmetPromise = promisifyMiddleware(helmet.apply(null, arguments));
 
   return (ctx, next) => {

@@ -1,8 +1,8 @@
-'use strict';
+import * as Koa from 'koa';
+import { agent as request } from 'supertest';
+import koaHelmet from '../src/main';
 
-const helmet = require('../');
-const Koa = require('koa');
-const request = require('supertest');
+const helmet = koaHelmet as any;
 
 describe('integration', function() {
   let app;
@@ -22,7 +22,7 @@ describe('integration', function() {
           ctx.body = 'Hello world!';
         });
       });
-      app.use(helmet());
+      app.use(koaHelmet());
 
       request(app.listen())
         .get('/')
@@ -75,7 +75,7 @@ describe('integration', function() {
         .expect('X-Content-Type-Options', 'nosniff')
 
         // publicKeyPins
-        .expect('Public-Key-Pins', 'pin-sha256="AbCdEf123="; pin-sha256="ZyXwVu456="; max-age=1; includeSubdomains; report-uri="http://example.com"')
+        .expect('Public-Key-Pins', 'pin-sha256="AbCdEf123="; pin-sha256="ZyXwVu456="; max-age=1; includeSubDomains; report-uri="http://example.com"')
         .expect(201, 'Hello world!', done);
     });
   });

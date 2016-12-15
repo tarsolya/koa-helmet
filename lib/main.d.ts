@@ -1,2 +1,2 @@
-export declare const koaHelmet: () => Function;
+export declare const koaHelmet: () => (ctx: any, next: any) => Promise<{}>;
 export default koaHelmet;
