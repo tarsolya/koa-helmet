@@ -4,6 +4,8 @@
   "description": "Security header middleware collection for koa",
   "license": "MIT",
   "version": "2.0.0",
+  "main": "lib/main.js",
+  "types": "lib/main.d.ts",
   "keywords": [
     "security",
     "headers",
@@ -13,18 +15,22 @@
     "hsts"
   ],
   "repository": {
-    "url": "git://github.com/venables/koa-helmet.git"
+    "url": "git://github.com/tarsolya/koa-helmet.git"
   },
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 6.9.1"
   },
   "dependencies": {
     "helmet": "^2.1.1"
   },
   "devDependencies": {
+    "@types/helmet": "0.0.33",
+    "@types/node": "^6.0.52",
     "koa": ">= 2.0.0",
     "mocha": "^2.5.3",
     "supertest": "^1.2.0",
+    "tslint": "^4.0.2",
+    "typescript": "^2.1.4",
     "underscore": "^1.8.3"
   },
   "peerDependencies": {
@@ -32,6 +38,5 @@
   },
   "scripts": {
     "test": "mocha test"
-  },
-  "main": "lib/index"
+  }
 }

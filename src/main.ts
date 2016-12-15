@@ -1,8 +1,6 @@
-'use strict';
+import helmet from 'helmet';
 
-const helmet = require('helmet');
-
-const promisifyMiddleware = function(middleware) {
+const promisifyMiddleware = function(middleware: any) {
   return function(req, res) {
     return new Promise(function(resolve, reject) {
       middleware(req, res, function(err) {
@@ -14,9 +12,9 @@ const promisifyMiddleware = function(middleware) {
       });
     });
   };
-}
+};
 
-const koaHelmet = function() {
+export const koaHelmet = (): Function => {
   const helmetPromise = promisifyMiddleware(helmet.apply(null, arguments));
 
   return (ctx, next) => {
@@ -31,8 +29,8 @@ Object.keys(helmet).forEach(function(helmetMethod) {
 
     return (ctx, next) => {
       return methodPromise(ctx.req, ctx.res).then(next);
-    }
-  }
+    };
+  };
 });
 
-module.exports = koaHelmet;
+export default koaHelmet;
